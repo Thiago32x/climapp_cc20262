@@ -42,6 +42,26 @@ class _ListCityScreenState extends State<ListCityScreen> {
             mainAxisSize: MainAxisSize.max,
             children: [
               const SizedBox(height: 25),
+              Consumer<ListCityController>(
+                builder: (context, controller, child) {
+                  return Row(
+                    children: [
+                      const Icon(Icons.public, color: Colors.white),
+                      const SizedBox(width: 8),
+                      Text(
+                        controller.deviceCountry.isEmpty
+                            ? '...'
+                            : controller.deviceCountry,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
+              const SizedBox(height: 15),
               TextField(
                 style: const TextStyle(color: Colors.white),
                 controller: textController,
